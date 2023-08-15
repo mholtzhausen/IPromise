@@ -1,4 +1,4 @@
-import { IPromiseServer } from './IPromise.mjs'
+import { IPromiseServer } from '../src/index.mjs'
 
 import echo from './proc/echo.mjs'
 import echoError from './proc/echoError.mjs'

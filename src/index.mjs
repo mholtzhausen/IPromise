@@ -1,6 +1,5 @@
 import { JSONRPCServer } from 'json-rpc-2.0'
 import { JSONRPCClient } from 'json-rpc-2.0'
-import Proc from './Proc.mjs'
 import express from 'express'
 import bodyParser from 'body-parser'
 import compression from 'compression'
@@ -15,7 +14,7 @@ export class IPromiseServer extends JSONRPCServer {
     }
 
     super()
-    this.addProc(new Proc({
+    this.addProc(new IFunc({
       name: '__methods',
       description: 'Lists all the methods available on this server',
 
@@ -60,7 +59,7 @@ export class IPromiseServer extends JSONRPCServer {
   }
 
   addProc(proc) {
-    if (!(proc instanceof Proc)) throw new Error('proc must be an instance of Proc')
+    if (!(proc instanceof IFunc)) throw new Error('proc must be an instance of Proc')
     this.#procs.push(proc)
     super.addMethod(proc.name, proc.method)
   }
@@ -74,7 +73,6 @@ export class IPromiseServer extends JSONRPCServer {
     this.addProc(proc)
   }
 }
-
 
 export class IPomiseClient extends JSONRPCClient {
   constructor(config = { url: `http://localhost:3000/iPromise` }) {
@@ -120,5 +118,21 @@ export class IPomiseClient extends JSONRPCClient {
       }
     })
     return stub
+  }
+}
+
+export class IFunc {
+  name = ''
+  method = null
+  argSchema = null
+  description = ''
+  returnSchema = null
+
+  constructor({ name, method, argSchema = null, description = '', returnSchema = null }) {
+    this.name = name
+    this.method = method
+    this.argSchema = argSchema
+    this.description = description
+    this.returnSchema = returnSchema
   }
 }

@@ -1,6 +1,6 @@
-import Proc from '../Proc.mjs'
+import { IFunc } from '../../src/index.mjs'
 
-export default new Proc({
+export default new IFunc({
   name: 'echo.error',
   description: 'An example proc that throws an error',
   argSchema: { text: { type: 'string' } },

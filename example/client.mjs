@@ -1,5 +1,5 @@
-import './src/utils/disableExperimentalWarnings.mjs'
-import { IPomiseClient } from './src/IPromise.mjs'
+import '../src/utils/disableExperimentalWarnings.mjs'
+import { IPomiseClient } from '../src/index.mjs'
 
 const { PORT = 3000 } = process.env
 

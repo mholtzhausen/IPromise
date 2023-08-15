@@ -1,6 +1,6 @@
-import Proc from '../Proc.mjs'
+import { IFunc } from '../../src/index.mjs'
 
-export default new Proc({
+export default new IFunc({
   name: 'log',
   description: 'Logs the argument to the console.',
   argSchema: [{ type: 'object' }],
