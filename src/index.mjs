@@ -1,5 +1,4 @@
-import { JSONRPCServer } from 'json-rpc-2.0'
-import { JSONRPCClient } from 'json-rpc-2.0'
+import { JSONRPCServer, JSONRPCClient } from 'json-rpc-2.0'
 import express from 'express'
 import bodyParser from 'body-parser'
 import compression from 'compression'
